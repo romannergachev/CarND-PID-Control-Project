@@ -3,7 +3,7 @@
 
 class PID {
 public:
-  const double MINIMUM_SPEED = 30.0;
+  const double MINIMUM_SPEED = 50.0;
   /*
   * Errors
   */
