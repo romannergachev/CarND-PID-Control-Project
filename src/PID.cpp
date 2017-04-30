@@ -1,5 +1,4 @@
 #include "PID.h"
-#include <iostream>
 
 /*
 * PID Controller class
@@ -21,15 +20,6 @@ void PID::UpdateError(double cte) {
   pError = cte;
 }
 
-double PID::TotalError(double min, double max) {
-  double totalError = -(Kp * pError + Kd * dError + Ki * iError);
-  if (totalError < min) {
-    std::cout << "Speed Value Fixed! < " << totalError << std::endl;
-    totalError = min;
-  } else if (totalError > max) {
-    std::cout << "Speed Value Fixed! > " << totalError << std::endl;
-    totalError = max;
-  }
-
-  return totalError;
+double PID::TotalError() {
+  return -(Kp * pError + Kd * dError + Ki * iError);
 }
