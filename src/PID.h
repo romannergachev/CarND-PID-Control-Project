@@ -3,12 +3,13 @@
 
 class PID {
 public:
+  const double MINIMUM_SPEED = 30.0;
   /*
   * Errors
   */
-  double p_error;
-  double i_error;
-  double d_error;
+  double pError;
+  double iError;
+  double dError;
 
   /*
   * Coefficients
@@ -40,7 +41,7 @@ public:
   /*
   * Calculate the total PID error.
   */
-  double TotalError();
+  double TotalError(double min, double max);
 };
 
 #endif /* PID_H */
