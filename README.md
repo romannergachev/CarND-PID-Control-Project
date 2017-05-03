@@ -1,7 +1,34 @@
 # CarND-Controls-PID
-Self-Driving Car Engineer Nanodegree Program
+The idea of this project is to implement a standard PID controller to drive a car safely on the simulator track.
 
 ---
+
+## Reflection
+The PID controller is made up fo 3 parts:<br>
+Proportional - steering the car proportionally to its offset from the center of the road. This way the car can drive on the track, but it won't drive strait as desired,
+it would go sinusoidally.
+
+[![P controller](https://img.youtube.com/vi/fNtEBGp31LA/0.jpg)](https://www.youtube.com/watch?v=fNtEBGp31LA)
+
+Integration - Here we we add integral over the whole error and correct our controller using it to compensate any Drift of the vehicle. Not much changed on the video, since we don't have a lot of drift here, so nothing to compensate now.
+
+
+[![PI controller](https://img.youtube.com/vi/OCOEsK8J_2Q/0.jpg)](https://www.youtube.com/watch?v=OCOEsK8J_2Q)
+
+Differential - Here we we add differential part to our Proportional Controller. This way it will understand how quickly the car is moving back to the required path and correct the steering angle.
+
+[![PID controller](https://img.youtube.com/vi/0wXDCJHqsIU/0.jpg)](https://www.youtube.com/watch?v=0wXDCJHqsIU)
+
+---
+
+### Tuning
+I have combined both manual tuning and twiddle algorithm presented in the lectures to tune the steering parameters. So to begin with I manually tried different options for the parameters
+and after some time I found the params that provided me with satisfactory results. After that I've used twiddle algorithm to fine tune the parameters.
+
+I ended up using this parameters for my steering PID with the speed set to be around 50:
+```
+steeringPid.Init(0.15, 0.001, 3.0);
+```
 
 ## Dependencies
 
